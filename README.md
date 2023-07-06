@@ -1,74 +1,30 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Image Recognition Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Project Description
+This project is a web application that allows users to upload images and perform image recognition using AWS services. It utilizes AWS S3 for image storage, AWS Rekognition for object detection, AWS DynamoDB for storing image metadata, and AWS SNS for sending notifications. The image recognition process is performed using an AWS Lambda function triggered by the uploaded image.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Architecture Overview
+The application follows a serverless architecture pattern. When a user uploads an image, it is stored in an S3 bucket. The application then triggers an AWS Lambda function, which performs object detection on the uploaded image using AWS Rekognition. The recognized objects are stored in DynamoDB, and a notification is sent via SNS. The web application interacts with these services to provide a seamless user experience.
 
-## Description
+## Implementation Steps
+1. Clone the repository and navigate to the project directory.
+2. Install dependencies by running the command: `npm install`.
+3. Configure AWS credentials by updating the `.env` file with your AWS credentials and resource details.
+4. Start the application by running the command: `npm run start`.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Deployment
+To deploy the application to a serverless environment, follow these steps:
 
-## Installation
+1. Set up an AWS account and create the necessary resources: S3 bucket, DynamoDB table, SNS topic, and Lambda function.
+2. Update the `.env` file with the AWS resource details.
+3. Build the application by running the command: `npm run build`.
+4. Deploy the application using your preferred method, such as AWS CloudFormation or the Serverless Framework.
 
-```bash
-$ npm install
-```
+## Demo
+To use the application, follow these steps:
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-# image-recognition-app
+1. Access the web application by visiting `http://localhost:3000` in your browser.
+2. Click on the "Upload Image" button and select an image file.
+3. After uploading, the image recognition process will start.
+4. Once the process is complete, you will see the recognized objects on the screen.
+5. The image metadata and notification will be stored in DynamoDB and sent via SNS, respectively.
